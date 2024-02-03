@@ -1,6 +1,0 @@
-{
-    "name": "com.relario.pay.Runtime",
-    "references": [
-        "Unity.TextMeshPro"
-    ]
-}

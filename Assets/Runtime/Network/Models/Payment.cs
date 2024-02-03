@@ -1,11 +1,9 @@
 using UnityEngine;
 using System;
 
-namespace Relario.Network.Models
-{
+namespace Relario.Network.Models {
     [Serializable]
-    public class Payment
-    {
+    public class Payment {
         public int id;
         public int transactionId;
         public string cli;

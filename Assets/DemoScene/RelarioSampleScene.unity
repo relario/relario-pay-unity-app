@@ -132,8 +132,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 20624624}
+  - component: {fileID: 20624623}
   - component: {fileID: 20624622}
-  - component: {fileID: 20624626}
+  - component: {fileID: 20624620}
   m_Layer: 0
   m_Name: RelarioSubscriptionManager
   m_TagString: Untagged
@@ -141,6 +142,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &20624620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20624619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d809497da2a1b47bb463f158fa4026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subscriptionType: 0
+  paymentType: 0
+  smsCount: 2
+  callDuration: 5
+  customerMccmncc: 
+  productId: aban500
+  productName: Aban
+  customerId: 
+  TransactionLaunched:
+    m_PersistentCalls:
+      m_Calls: []
+  RewardReadyEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  debugMode: 1
+  makeCompleteTransaction: 1
+  numSuccessfulPayments: 1
+  alwaysCheckSubscription: 0
+  logRemainingDays: 1
+  logDaysDifference: 0
+  uIController: {fileID: 629383925}
 --- !u!114 &20624622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,22 +194,7 @@ MonoBehaviour:
   transactionFailed:
     m_PersistentCalls:
       m_Calls: []
---- !u!4 &20624624
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 20624619}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &20624626
+--- !u!114 &20624623
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,15 +203,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 20624619}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a204fe29a032f471c97a2ae480ed52bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f7fecc091ce6f84eb575cb9a3d7e694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subscriptionType: 0
-  apiKey: 6c0da5e46c7a42aaa33e0aa28545475d
-  switchToSmsApp: 0
-  maxNumberOfTransactionChecks: 5
-  intervalOfTransactionChecks: 10
-  minThresholdForSuccess: 1
+  IsTimeLodaed: 0
+--- !u!4 &20624624
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20624619}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.3089094, y: 3.1310108, z: -0.18287951}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &23825079
 GameObject:
   m_ObjectHideFlags: 0
@@ -2257,7 +2286,6 @@ GameObject:
   m_Component:
   - component: {fileID: 629383926}
   - component: {fileID: 629383925}
-  - component: {fileID: 629383927}
   m_Layer: 0
   m_Name: Controllers
   m_TagString: Untagged
@@ -2274,7 +2302,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 629383924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a732f5e5990d43ea9d217ea0d95c66d, type: 3}
+  m_Script: {fileID: 11500000, guid: a58cd1b0bd5d1dd419d3314384f87480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   partialPaymentsText: {fileID: 335187038}
@@ -2284,7 +2312,7 @@ MonoBehaviour:
   redeemBtn: {fileID: 1941674538}
   loadingBar: {fileID: 1276057586}
   dropdown: {fileID: 494848315}
-  relarioSubscriptionManager: {fileID: 0}
+  relarioSubscriptionManager: {fileID: 20624620}
   completePartialBtn: {fileID: 1013565359}
 --- !u!4 &629383926
 Transform:
@@ -2294,28 +2322,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629383924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 8.36578, y: -8.545526, z: -0.4286573}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &629383927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 629383924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7197a429fa9b43c48ef03617cae7cf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  subscriptionManager: {fileID: 0}
-  skipDaysBtn: {fileID: 721229931}
-  dropdown: {fileID: 494848315}
 --- !u!1 &667515592
 GameObject:
   m_ObjectHideFlags: 0
@@ -3469,7 +3482,7 @@ MonoBehaviour:
     even_logImage: {fileID: 2800000, guid: d27aad55b568c6544b0b95a95da44bc7, type: 3}
     odd_logImage: {fileID: 2800000, guid: 8ffbb44a2c3adae45913474e4fd487f5, type: 3}
     selectedImage: {fileID: 2800000, guid: 17117a429b08e7e43b0b6c8421de69fe, type: 3}
-    reporterScrollerSkin: {fileID: 0}
+    reporterScrollerSkin: {fileID: 11400000, guid: 1cc68832d00d3284a9324a4dc05be753, type: 2}
   size: {x: 32, y: 32}
   maxSize: 20
   numOfCircleToShow: 1
@@ -5624,6 +5637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88d2660be84896c469a592caff52c34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotation: 180
 --- !u!1 &1492647494
 GameObject:
   m_ObjectHideFlags: 0
@@ -6638,7 +6652,6 @@ GameObject:
   - component: {fileID: 1743860572}
   - component: {fileID: 1743860571}
   - component: {fileID: 1743860570}
-  - component: {fileID: 1743860573}
   - component: {fileID: 1743860569}
   m_Layer: 9
   m_Name: SubscribeBtn
@@ -6739,7 +6752,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 62605914}
+        m_TargetAssemblyTypeName: SMSPaymentHandler, Assembly-CSharp
+        m_MethodName: RequestPermissions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 20624620}
         m_TargetAssemblyTypeName: RelarioSubscriptionManager, Assembly-CSharp
         m_MethodName: SubscribeRewards
         m_Mode: 1
@@ -6789,36 +6814,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1743860567}
   m_CullTransparentMesh: 1
---- !u!114 &1743860573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1743860567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e1593727992e9343b89edad667a29e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  productId: 
-  productName: test
-  smsCount: 1
-  customerId: 
-  timeUnit: 2
-  intervalRate: 1
-  TransactionLaunch:
-    m_PersistentCalls:
-      m_Calls: []
-  TransactionComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  TransactionFailed:
-    m_PersistentCalls:
-      m_Calls: []
-  PartialTransaction:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1766510765
 GameObject:
   m_ObjectHideFlags: 0
@@ -7644,7 +7639,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 20624620}
         m_TargetAssemblyTypeName: RelarioSubscriptionManager, Assembly-CSharp
         m_MethodName: GrantRewards
         m_Mode: 1

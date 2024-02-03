@@ -32,6 +32,7 @@ public class RelarioTransaction : MonoBehaviour {
             NewTransactionBody transactionBody;
             if (this.paymentType == PaymentType.sms) {
                 transactionBody = new NewTransactionBody (
+                    paymentType,
                     smsCount,
                     customerMccmncc,
                     customerId,
@@ -41,6 +42,7 @@ public class RelarioTransaction : MonoBehaviour {
                 );
             } else {
                 transactionBody = new NewTransactionBody (
+                    paymentType,
                     callDuration,
                     customerMccmncc,
                     customerId,
