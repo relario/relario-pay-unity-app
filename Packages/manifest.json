@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "com.google.external-dependency-manager": "1.2.178",
+    "com.relario.pay": "https://github.com/relario/relario-pay-unity-sdk.git",
     "com.unity.ide.visualstudio": "2.0.22",
     "com.unity.ide.vscode": "1.2.5",
     "com.unity.textmeshpro": "3.0.7",
@@ -34,5 +36,14 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  }
+  },
+  "scopedRegistries": [
+    {
+      "name": "package.openupm.com",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.google.external-dependency-manager"
+      ]
+    }
+  ]
 }
