@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using Relario.Network.Models;
 using System;
+using Relario;
 
 public class UIController : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class UIController : MonoBehaviour
     public GameObject subscribeBtn, skipDaysBtn, redeemBtn, loadingBar;
     public TMP_Dropdown dropdown;
     [Header("Subscription Manager")]
-    public RelarioSubscriptionManager relarioSubscriptionManager;
+    public RelarioPay relarioSubscriptionManager;
     public Button completePartialBtn;
 
     private void Awake()
@@ -25,16 +26,9 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
-        RelarioSubscriptionManager.TransactionPaid += HandleTransactionPaid;
-        RelarioSubscriptionManager.TransactionFailed += HandleTransactionFailed;
-
-        RelarioSubscriptionManager.PartialPaymentsExists += HandlePartialPaymentsExists;
-        RelarioSubscriptionManager.PartialPaymentsRecieved += HandlePartialPaymentsRecieved;
-        RelarioSubscriptionManager.PartialTransactionPaid += HandlePartialPaymentsPaid;
-        RelarioSubscriptionManager.SMSPricesFetched += HandleSMSPricesFetched;
-
-        relarioSubscriptionManager.TransactionLaunched.AddListener(HandleTransactionLaunch);
-        relarioSubscriptionManager.RewardReadyEvent.AddListener(HandleRewardReady);
+        relarioSubscriptionManager.OnSuccessfulPay += HandleTransactionPaid;
+        relarioSubscriptionManager.OnFailedPay += HandleTransactionFailed;
+        relarioSubscriptionManager.OnPartialPay += HandlePartialPaymentsRecieved;
 
         if (PlayerPrefs.GetInt("Subscribed") == 1)
         {
@@ -44,7 +38,7 @@ public class UIController : MonoBehaviour
 
         UpdatePartialPaymentsText();
         redeemBtn.GetComponent<Button>().onClick.AddListener(RedeemPartialRewards);
-        completePartialBtn.onClick.AddListener(relarioSubscriptionManager.LaunchPartialPayment);
+        // completePartialBtn.onClick.AddListener(relarioSubscriptionManager.LaunchPartialPayment);
         completePartialBtn.gameObject.SetActive(false);
 
         dropdown.onValueChanged.AddListener(OnDropdownValueChanged);
@@ -60,7 +54,7 @@ public class UIController : MonoBehaviour
         Debug.Log($"Rewards Granted, {transaction.payments.Count} Payments recieved");
     }
 
-    void HandleTransactionFailed(Transaction transaction)
+    void HandleTransactionFailed(Exception exception, Transaction transaction)
     {
         // Handle failed transaction
         UpdateTimerText($"You don't have enough sms units");
@@ -164,8 +158,6 @@ public class UIController : MonoBehaviour
         int pp = PlayerPrefs.GetInt("partial_Payments");
         pp -= 2;
 
-        relarioSubscriptionManager.GetAndSaveLastRewardTime();
-
         PlayerPrefs.SetInt("partial_Payments", pp);
         UpdatePartialPaymentsText();
         CheckPartialPayments();
@@ -195,7 +187,7 @@ public class UIController : MonoBehaviour
     void SkipDays()
     {
         StartCoroutine(RelaxSkipDays());
-        relarioSubscriptionManager.SkipDays();
+        // relarioSubscriptionManager.SkipDays();
     }
 
     IEnumerator RelaxSkipDays()

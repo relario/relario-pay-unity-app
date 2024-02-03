@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4789160975248271794
+--- !u!1 &2500148668644302169
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,71 +8,69 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6775178997036896261}
-  - component: {fileID: 8579231296216382014}
-  - component: {fileID: 2735057821635727327}
-  - component: {fileID: 7249437724809462389}
-  - component: {fileID: 5302831132166478429}
-  - component: {fileID: 7136000510872661963}
-  - component: {fileID: 7042527728161489253}
-  - component: {fileID: 3881855646227362131}
+  - component: {fileID: 2895190962151873524}
+  - component: {fileID: 5610832421299895786}
+  - component: {fileID: 8930507772738912387}
+  - component: {fileID: 8771036984494669291}
+  - component: {fileID: 178623275478005849}
+  - component: {fileID: 4760983933067807989}
   m_Layer: 9
-  m_Name: RelarioPaymentButton
+  m_Name: SMS-Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &6775178997036896261
+--- !u!224 &2895190962151873524
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4789160975248271794}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 2500148668644302169}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5897272212414487480}
+  - {fileID: 1091133361751086408}
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &8579231296216382014
+--- !u!222 &5610832421299895786
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4789160975248271794}
+  m_GameObject: {fileID: 2500148668644302169}
   m_CullTransparentMesh: 1
---- !u!114 &2735057821635727327
+--- !u!114 &8930507772738912387
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4789160975248271794}
+  m_GameObject: {fileID: 2500148668644302169}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8980392, g: 0.62352943, b: 0.46666667, a: 1}
+  m_Color: {r: 0.14901957, g: 0.36982515, b: 0.9529412, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6dce1bd6a26a7c241a5c1f0ff64b4719, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2d83fca5ee8ca494bb42ad8ce1a89a3c, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -82,13 +80,13 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 2
---- !u!114 &7249437724809462389
+--- !u!114 &8771036984494669291
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4789160975248271794}
+  m_GameObject: {fileID: 2500148668644302169}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -122,76 +120,48 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 2735057821635727327}
+  m_TargetGraphic: {fileID: 8930507772738912387}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5302831132166478429
+--- !u!114 &178623275478005849
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4789160975248271794}
+  m_GameObject: {fileID: 2500148668644302169}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4bf9d8b3876c7f04582f4dab06fc8a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onTransactionLaunch:
-    m_PersistentCalls:
-      m_Calls: []
-  onTransactionComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  onTransactionFailed:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &7136000510872661963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4789160975248271794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71003da557200de4cb510bcb2c41a65e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paymentType: 0
-  smsCount: 1
-  callDuration: 5
-  customerMccmncc: 
-  customerId: 
+  purchaseType: 0
   productId: test
   productName: test
---- !u!114 &7042527728161489253
+  smsCount: 1
+  timeUnit: 0
+  intervalRate: 1
+  customerId: 
+  TransactionLaunch:
+    m_PersistentCalls:
+      m_Calls: []
+  TransactionComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  TransactionFailed:
+    m_PersistentCalls:
+      m_Calls: []
+  PartialPayments:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &4760983933067807989
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4789160975248271794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47ee2a069a8c29b4286d791a06a74fd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transactionId: 
-  transactionPaid:
-    m_PersistentCalls:
-      m_Calls: []
-  transactionFailed:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &3881855646227362131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4789160975248271794}
+  m_GameObject: {fileID: 2500148668644302169}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
@@ -200,7 +170,7 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 0, y: -5}
   m_UseGraphicAlpha: 1
---- !u!1 &8228165301073415683
+--- !u!1 &5896200673573010832
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,51 +178,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5897272212414487480}
-  - component: {fileID: 814512764796924212}
-  - component: {fileID: 5055032369337035963}
+  - component: {fileID: 1091133361751086408}
+  - component: {fileID: 5562327307269355191}
+  - component: {fileID: 6752496006771161415}
   m_Layer: 9
-  m_Name: PlayerPrice
+  m_Name: PriceTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &5897272212414487480
+--- !u!224 &1091133361751086408
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8228165301073415683}
+  m_GameObject: {fileID: 5896200673573010832}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6775178997036896261}
+  m_Father: {fileID: 2895190962151873524}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 400, y: 90}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &814512764796924212
+--- !u!222 &5562327307269355191
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8228165301073415683}
+  m_GameObject: {fileID: 5896200673573010832}
   m_CullTransparentMesh: 1
---- !u!114 &5055032369337035963
+--- !u!114 &6752496006771161415
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8228165301073415683}
+  m_GameObject: {fileID: 5896200673573010832}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -266,17 +236,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pay 1x SMS
+  m_text: 'PAY VIA SMS
+
+    <color=yellow>(x2 SMS Units) </color>'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2b291c90ac4cec64a9ce068fd1342ad1, type: 2}
-  m_sharedMaterial: {fileID: 21228068681370702, guid: 2b291c90ac4cec64a9ce068fd1342ad1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278251775
-  m_fontColor: {r: 1, g: 0.941747, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -293,13 +265,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
+  m_fontSize: 60
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 50
-  m_fontStyle: 0
+  m_fontSizeMax: 60
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
