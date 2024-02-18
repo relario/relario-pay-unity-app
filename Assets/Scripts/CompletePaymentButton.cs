@@ -6,35 +6,14 @@ using UnityEngine.UI;
 using UnityEngine.Android;
 using Relario;
 
-public enum PurchaseType
-{
-    consumable,
-    subscription
-}
-
-public class RelarioPaymentButton : MonoBehaviour
+public class CompletePaymentButton : MonoBehaviour
 {
     RelarioPay relarioPay;
-
-    [Header("Purchase Type")]
-    public PurchaseType purchaseType;
-
-    [Header("Payment Options")]
-    public string productId;
-    public string productName;
-    public int smsCount;
-
-    [Header("Subscription Options")]
-    public TimeUnit timeUnit;
-    public int intervalRate;
-
-    [Header("(Optional)")]
-    public string customerId;
-    public bool canRetryFailedPurchase;
 
     [Header("Callbacks")]
     public UnityEvent TransactionLaunch;
     public UnityEvent TransactionComplete, TransactionFailed, PartialPayments;
+
 
 
     void Start()
@@ -55,27 +34,8 @@ public class RelarioPaymentButton : MonoBehaviour
 
     void OnPaymentClick()
     {
-        if (purchaseType == PurchaseType.consumable)
-        {
-            relarioPay.Pay(smsCount, productId, productName, customerId, (exception, transaction) =>
-                {
-                    Debug.Log("Consumable Transaction started");
-                }
-            );
-        }
-        else
-        {
-            SubscriptionOptions options = new SubscriptionOptions(
-                productId: productId,
-                smsCount: smsCount,
-                productName: productName,
-                customerId: Guid.NewGuid().ToString(),
-                intervalRate: intervalRate,
-                timeUnit: timeUnit
-            );
-            relarioPay.Subscribe(options);
-        }            
-        TransactionLaunch.Invoke();
+        var transaction = relarioPay.GetLastSubscriptionTransaction();
+        relarioPay.RetryTransaction(transaction);
     }
 
     void OnTransactionPaid(Transaction transaction)
@@ -93,4 +53,5 @@ public class RelarioPaymentButton : MonoBehaviour
     {
         TransactionFailed.Invoke();
     }
+
 }
