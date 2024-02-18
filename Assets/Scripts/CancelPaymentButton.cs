@@ -8,7 +8,7 @@ using Relario;
 
 public class CancelPaymentButton : MonoBehaviour
 {
-    RelarioPay relarioPay;
+    public RelarioPay relarioPay;
     [Header("Options")]
     public bool cancelLastPayment;
     public string productId;

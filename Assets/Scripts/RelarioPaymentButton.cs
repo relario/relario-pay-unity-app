@@ -63,7 +63,7 @@ public class RelarioPaymentButton : MonoBehaviour
                 }
             );
         }
-        else
+        else if (purchaseType == PurchaseType.subscription)
         {
             SubscriptionOptions options = new SubscriptionOptions(
                 productId: productId,
@@ -74,6 +74,7 @@ public class RelarioPaymentButton : MonoBehaviour
                 timeUnit: timeUnit
             );
             relarioPay.Subscribe(options);
+            Debug.Log("Subscription Transaction started");
         }            
         TransactionLaunch.Invoke();
     }
