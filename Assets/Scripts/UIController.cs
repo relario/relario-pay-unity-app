@@ -52,7 +52,7 @@ public class UIController : MonoBehaviour
         UpdatePartialPaymentsText();
     }
 
-    void HandleTransactionPaid(Transaction transaction)
+    public void HandleTransactionPaid(Transaction transaction)
     {
         cancelSubBtn.SetActive(true);
         // Handle successful transaction
@@ -60,14 +60,14 @@ public class UIController : MonoBehaviour
         Debug.Log($"Rewards Granted, {transaction.payments.Count} Payments recieved");
     }
 
-    void HandleTransactionFailed(Exception exception, Transaction transaction)
+    public void HandleTransactionFailed(Exception exception, Transaction transaction)
     {
         // Handle failed transaction
         NotifyPlayerWarn($"You don't have enough sms units");
         ResetSubscription();
     }
 
-    void HandlePartialPaymentsRecieved(Transaction transaction)
+    public void HandlePartialPaymentsRecieved(Transaction transaction)
     {
         int partial_Payments = transaction.payments.Count;
         PlayerPrefs.SetInt("partial_Payments", partial_Payments);

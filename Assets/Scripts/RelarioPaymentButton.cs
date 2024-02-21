@@ -5,6 +5,8 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.Android;
 using Relario;
+using System.Collections.Generic;
+using System.Collections;
 
 public enum PurchaseType
 {
@@ -36,6 +38,7 @@ public class RelarioPaymentButton : MonoBehaviour
     public UnityEvent TransactionLaunch;
     public UnityEvent TransactionComplete, TransactionFailed, PartialPayments;
 
+    Coroutine checkingRoutine;
 
     void Start()
     {
@@ -74,6 +77,11 @@ public class RelarioPaymentButton : MonoBehaviour
                 timeUnit: timeUnit
             );
             relarioPay.Subscribe(options);
+            
+            if (checkingRoutine != null)
+            { StopCoroutine(checkingRoutine); }
+
+            checkingRoutine = StartCoroutine(CheckSubscriptionTransactionStatus());
             Debug.Log("Subscription Transaction started");
         }            
         TransactionLaunch.Invoke();
@@ -93,5 +101,38 @@ public class RelarioPaymentButton : MonoBehaviour
     void OnTransactionFailed(Exception exception, Transaction transaction)
     {
         TransactionFailed.Invoke();
+    }
+
+    //Subscription checking method
+    private IEnumerator CheckSubscriptionTransactionStatus()
+    {
+        yield return new WaitForSeconds(relarioPay.intervalOfTransactionChecks);
+        Transaction currentTransaction = relarioPay.GetLastSubscriptionTransaction();
+
+        if (currentTransaction == null)
+        {
+            OnTransactionFailed(new Exception("Failed to check transaction"), null);
+            //having to reference UI controller here
+            UIController.instance.HandleTransactionFailed(new Exception("Failed to check transaction"), null);
+        }
+        else if (currentTransaction.IsFullyPaid(smsCount))
+        {
+            OnTransactionPaid(currentTransaction);
+            //having to reference UI controller here
+            UIController.instance.HandleTransactionPaid(currentTransaction);
+        }
+        else if (currentTransaction.IsPartiallyPaid())
+        {
+            OnTransactionPartial(currentTransaction);
+            //having to reference UI controller here
+            UIController.instance.HandlePartialPaymentsRecieved(currentTransaction);
+        }
+        else if (currentTransaction.IsNotPaid())
+        {
+            OnTransactionFailed(null, currentTransaction);
+            //having to reference UI controller here
+            UIController.instance.HandleTransactionFailed(null, currentTransaction);
+        }
+        yield break;
     }
 }
