@@ -108,14 +108,14 @@ public class RelarioPaymentButton : MonoBehaviour
     {
         yield return new WaitForSeconds(relarioPay.intervalOfTransactionChecks);
         Transaction currentTransaction = relarioPay.GetLastSubscriptionTransaction();
-
+                
         if (currentTransaction == null)
         {
             OnTransactionFailed(new Exception("Failed to check transaction"), null);
             //having to reference UI controller here
             UIController.instance.HandleTransactionFailed(new Exception("Failed to check transaction"), null);
         }
-        else if (currentTransaction.IsFullyPaid(smsCount))
+        else if (currentTransaction.IsFullyPaid())
         {
             OnTransactionPaid(currentTransaction);
             //having to reference UI controller here

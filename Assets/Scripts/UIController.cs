@@ -69,8 +69,11 @@ public class UIController : MonoBehaviour
 
     public void HandlePartialPaymentsRecieved(Transaction transaction)
     {
-        int partial_Payments = transaction.payments.Count;
-        PlayerPrefs.SetInt("partial_Payments", partial_Payments);
+        int curPartial_Payments = transaction.payments.Count;
+        int extPartial_Payments = PlayerPrefs.GetInt("partial_Payments");
+
+        curPartial_Payments += extPartial_Payments;
+        PlayerPrefs.SetInt("partial_Payments", curPartial_Payments);
 
         // Handle partial payments recieved
         //to display content------------- 
