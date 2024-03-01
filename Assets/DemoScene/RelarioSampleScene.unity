@@ -5533,7 +5533,7 @@ MonoBehaviour:
   purchaseType: 1
   productId: test
   productName: test
-  smsCount: 2
+  smsCount: 1
   timeUnit: 2
   intervalRate: 1
   customerId: 
@@ -5668,7 +5668,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Daily
 
-    <color=yellow>(x2 SMS) </color>'
+    <color=yellow>(x1 SMS) </color>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

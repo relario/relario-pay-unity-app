@@ -125,9 +125,10 @@ public class RelarioPaymentButton : MonoBehaviour
     //Subscription checking method
     private IEnumerator CheckSubscriptionTransactionStatus()
     {
-        yield return new WaitForSeconds(relarioPay.intervalOfTransactionChecks);
+        yield return new WaitForSeconds(relarioPay.intervalOfTransactionChecks+5f);
         Transaction currentTransaction = relarioPay.GetLastSubscriptionTransaction();
-
+        Debug.Log($"Rewards Granted, {currentTransaction.payments.Count} Payments recieved");
+        
         if (currentTransaction == null)
         {
             OnTransactionFailed(new Exception("Failed to check transaction"), null);
