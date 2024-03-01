@@ -43,30 +43,31 @@ public class RelarioPaymentButton : MonoBehaviour
     void Start()
     {
         relarioPay = FindObjectOfType<RelarioPay>();
+        if (!relarioPay)
+        {
+            Debug.LogError("Ensure that you have at least one GameObect with RelarioPay attached to it");
+        }
         GetComponent<Button>().onClick.AddListener(OnPaymentClick);
     }
 
-    private void OnDisable() {
+    private void OnDisable()
+    {
         SubscribeEvents(false);
     }
 
-    void SubscribeEvents(bool subscribe) {
-        if (relarioPay)
+    void SubscribeEvents(bool subscribe)
+    {
+        if (subscribe)
         {
-            if (subscribe)
-            {
-                relarioPay.OnSuccessfulPay += OnTransactionPaid;
-                relarioPay.OnFailedPay += OnTransactionFailed;
-                relarioPay.OnPartialPay += OnTransactionPartial;
-            }else{
-                relarioPay.OnSuccessfulPay -= OnTransactionPaid;
-                relarioPay.OnFailedPay -= OnTransactionFailed;
-                relarioPay.OnPartialPay -= OnTransactionPartial;
-            }
+            relarioPay.OnSuccessfulPay += OnTransactionPaid;
+            relarioPay.OnFailedPay += OnTransactionFailed;
+            relarioPay.OnPartialPay += OnTransactionPartial;
         }
         else
         {
-            Debug.LogError("Ensure that you have at least one GameObect with RelarioPay attached to it");
+            relarioPay.OnSuccessfulPay -= OnTransactionPaid;
+            relarioPay.OnFailedPay -= OnTransactionFailed;
+            relarioPay.OnPartialPay -= OnTransactionPartial;
         }
     }
 
@@ -93,13 +94,13 @@ public class RelarioPaymentButton : MonoBehaviour
                 timeUnit: timeUnit
             );
             relarioPay.Subscribe(options);
-            
+
             if (checkingRoutine != null)
             { StopCoroutine(checkingRoutine); }
 
             checkingRoutine = StartCoroutine(CheckSubscriptionTransactionStatus());
             Debug.Log("Subscription Transaction started");
-        }            
+        }
         TransactionLaunch.Invoke();
     }
 
@@ -126,7 +127,7 @@ public class RelarioPaymentButton : MonoBehaviour
     {
         yield return new WaitForSeconds(relarioPay.intervalOfTransactionChecks);
         Transaction currentTransaction = relarioPay.GetLastSubscriptionTransaction();
-                
+
         if (currentTransaction == null)
         {
             OnTransactionFailed(new Exception("Failed to check transaction"), null);
