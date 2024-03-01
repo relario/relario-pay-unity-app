@@ -43,21 +43,37 @@ public class RelarioPaymentButton : MonoBehaviour
     void Start()
     {
         relarioPay = FindObjectOfType<RelarioPay>();
+        GetComponent<Button>().onClick.AddListener(OnPaymentClick);
+    }
+
+    private void OnDisable() {
+        SubscribeEvents(false);
+    }
+
+    void SubscribeEvents(bool subscribe) {
         if (relarioPay)
         {
-            relarioPay.OnSuccessfulPay += OnTransactionPaid;
-            relarioPay.OnFailedPay += OnTransactionFailed;
-            relarioPay.OnPartialPay += OnTransactionPartial;
+            if (subscribe)
+            {
+                relarioPay.OnSuccessfulPay += OnTransactionPaid;
+                relarioPay.OnFailedPay += OnTransactionFailed;
+                relarioPay.OnPartialPay += OnTransactionPartial;
+            }else{
+                relarioPay.OnSuccessfulPay -= OnTransactionPaid;
+                relarioPay.OnFailedPay -= OnTransactionFailed;
+                relarioPay.OnPartialPay -= OnTransactionPartial;
+            }
         }
         else
         {
             Debug.LogError("Ensure that you have at least one GameObect with RelarioPay attached to it");
         }
-        GetComponent<Button>().onClick.AddListener(OnPaymentClick);
     }
 
     void OnPaymentClick()
     {
+        SubscribeEvents(true);
+
         if (purchaseType == PurchaseType.consumable)
         {
             relarioPay.Pay(smsCount, productId, productName, customerId, (exception, transaction) =>
@@ -90,17 +106,19 @@ public class RelarioPaymentButton : MonoBehaviour
     void OnTransactionPaid(Transaction transaction)
     {
         TransactionComplete.Invoke();
-        // payOnTap = false;
+        SubscribeEvents(false);
     }
 
     void OnTransactionPartial(Transaction transaction)
     {
         PartialPayments.Invoke();
+        SubscribeEvents(false);
     }
 
     void OnTransactionFailed(Exception exception, Transaction transaction)
     {
         TransactionFailed.Invoke();
+        SubscribeEvents(false);
     }
 
     //Subscription checking method

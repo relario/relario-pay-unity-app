@@ -54,7 +54,6 @@ public class UIController : MonoBehaviour
 
     public void HandleTransactionPaid(Transaction transaction)
     {
-        cancelSubBtn.SetActive(true);
         // Handle successful transaction
         NotifyPlayer($"Rewards Granted");
         Debug.Log($"Rewards Granted, {transaction.payments.Count} Payments recieved");
