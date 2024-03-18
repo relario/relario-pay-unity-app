@@ -7,6 +7,8 @@ using UnityEngine.Android;
 using Relario;
 using System.Collections.Generic;
 using System.Collections;
+using Sentry;
+using Transaction = Relario.Network.Models.Transaction;
 
 public enum PurchaseType
 {
@@ -80,6 +82,7 @@ public class RelarioPaymentButton : MonoBehaviour
             relarioPay.Pay(smsCount, productId, productName, customerId, (exception, transaction) =>
                 {
                     Debug.Log("Consumable Transaction started");
+                    SentrySdk.CaptureException(exception);
                 }
             );
         }
@@ -100,7 +103,8 @@ public class RelarioPaymentButton : MonoBehaviour
 
             checkingRoutine = StartCoroutine(CheckSubscriptionTransactionStatus());
             Debug.Log("Subscription Transaction started");
-        }
+            SentrySdk.CaptureMessage("Subscription Transaction started");
+        }            
         TransactionLaunch.Invoke();
     }
 
@@ -118,6 +122,7 @@ public class RelarioPaymentButton : MonoBehaviour
 
     void OnTransactionFailed(Exception exception, Transaction transaction)
     {
+        SentrySdk.CaptureException(exception);
         TransactionFailed.Invoke();
         SubscribeEvents(false);
     }
